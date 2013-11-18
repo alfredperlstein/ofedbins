@@ -6,7 +6,7 @@
 # $Id: Makefile,v 1.2 2002/11/26 10:38:28 pmedwards Exp $
 #
 
-PORTNAME=       ofed-libs
+PORTNAME=       ofed-bins
 PORTVERSION=    1.0
 #PORTREVISION=   1
 
@@ -16,7 +16,7 @@ CATEGORIES=     devel
 #CATEGORIES+=     zfs
 
 MAINTAINER=     alfred@FreeBSD.org
-COMMENT=        libraries for ofed
+COMMENT=        binaries for ofed
 
 
 #NO_STAGE=yes

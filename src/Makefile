@@ -7,7 +7,7 @@
 #
 FBSD_SRCTOP?=/usr/src
 
-OFED_LIBDIR?=${FBSD_SRCTOP}/contrib/ofed/usr.lib
+OFED_BINDIR?=${FBSD_SRCTOP}/contrib/ofed
 
 .ifdef STAGEDIR
 DESTDIR=${STAGEDIR}
@@ -16,20 +16,26 @@ MAKEFLAGS+=	DESTDIR=${STAGEDIR}
 
 DESTDIR?=/
 
-MTREE_FILE=mellanox.lib.dist
+MTREE_FILE=mellanox.bin.dist
 
 all clean cleandepend obj depend install:
 .ifmake install
 	mtree -deU -f ${MTREE_FILE} -p ${DESTDIR}
 .endif
-	cd ${OFED_LIBDIR} && ${MAKE} ${MAKEFLAGS} $@
+	cd ${OFED_BINDIR} && ${MAKE} ${MAKEFLAGS} $@
 
 
 MTREE_ROOT?=/usr/stage
 mkmtree:
 	mkdir -p \
+	    	${MTREE_ROOT}/usr/bin \
 	    	${MTREE_ROOT}/usr/lib \
-		${MTREE_ROOT}/usr/share/man/man3
+		${MTREE_ROOT}/usr/share/man/man3 \
+		${MTREE_ROOT}/usr/include/infiniband/complib \
+		${MTREE_ROOT}/usr/include/infiniband/iba \
+		${MTREE_ROOT}/usr/include/infiniband/opensm \
+		${MTREE_ROOT}/usr/include/infiniband/vendor \
+		${MTREE_ROOT}/usr/include/rdma
 	mtree -cd -p ${MTREE_ROOT} > ${MTREE_FILE}
 
 .include <bsd.subdir.mk>

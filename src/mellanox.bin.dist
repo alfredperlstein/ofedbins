@@ -1,0 +1,92 @@
+#	   user: alfred
+#	machine: spigot
+#	   tree: /usr/stage
+#	   date: Mon Nov 18 08:47:06 2013
+
+# .
+/set type=dir uid=0 gid=0 mode=0755 nlink=1 flags=none
+.               nlink=3 time=1384789521.000000000
+
+# ./usr
+usr             nlink=6 time=1384793226.000000000
+
+# ./usr/bin
+bin             nlink=2 time=1384793226.000000000
+# ./usr/bin
+..
+
+
+# ./usr/include
+include         nlink=4 time=1384793195.000000000
+
+# ./usr/include/infiniband
+infiniband      nlink=7 time=1384793173.000000000
+
+# ./usr/include/infiniband/complib
+complib         nlink=2 time=1384793058.000000000
+# ./usr/include/infiniband/complib
+..
+
+
+# ./usr/include/infiniband/iba
+iba             nlink=2 time=1384793096.000000000
+# ./usr/include/infiniband/iba
+..
+
+
+# ./usr/include/infiniband/opensm
+opensm          nlink=2 time=1384793120.000000000
+# ./usr/include/infiniband/opensm
+..
+
+
+# ./usr/include/infiniband/rdma
+rdma            nlink=2 time=1384793173.000000000
+# ./usr/include/infiniband/rdma
+..
+
+
+# ./usr/include/infiniband/vendor
+vendor          nlink=2 time=1384793149.000000000
+# ./usr/include/infiniband/vendor
+..
+
+# ./usr/include/infiniband
+..
+
+
+# ./usr/include/rdma
+rdma            nlink=2 time=1384793195.000000000
+# ./usr/include/rdma
+..
+
+# ./usr/include
+..
+
+
+# ./usr/lib
+lib             nlink=2 time=1384789521.000000000
+# ./usr/lib
+..
+
+
+# ./usr/share
+share           nlink=3 time=1384789521.000000000
+
+# ./usr/share/man
+man             nlink=3 time=1384789521.000000000
+
+# ./usr/share/man/man3
+man3            nlink=2 time=1384789521.000000000
+# ./usr/share/man/man3
+..
+
+# ./usr/share/man
+..
+
+# ./usr/share
+..
+
+# ./usr
+..
+
