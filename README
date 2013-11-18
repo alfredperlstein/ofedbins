@@ -1,0 +1,8 @@
+How to make a FreeBSD port:
+
+export FREEBSD_SRCTOP=/path/to/your/freebsd/src
+cd port && make all package
+
+# then look in /usr/ports/packages/All/ofed-bins-1.0.txz
+
+-Alfred
