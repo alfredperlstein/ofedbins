@@ -5,9 +5,9 @@
 # Modules that include binary-only blobs of microcode should be selectable by
 # MK_SOURCELESS_UCODE option (see below).
 #
-FBSD_SRCTOP?=/usr/src
+FREEBSD_SRCTOP?=/usr/src
 
-OFED_BINDIR?=${FBSD_SRCTOP}/contrib/ofed
+OFED_BINDIR?=${FREEBSD_SRCTOP}/contrib/ofed
 
 .ifdef STAGEDIR
 DESTDIR=${STAGEDIR}
