@@ -19,11 +19,15 @@ DESTDIR?=/
 MTREE_FILE=mellanox.bin.dist
 
 all clean cleandepend obj depend install:
-.ifmake install
-	mtree -deU -f ${MTREE_FILE} -p ${DESTDIR}
-.endif
 	cd ${OFED_BINDIR} && ${MAKE} ${MAKEFLAGS} $@
 
+makestagedirs:
+	mkdir -p ${DESTDIR}
+	mtree -deU -f ${MTREE_FILE} -p ${DESTDIR}
+
+#
+# mtree -f ../../etc/mtree/BSD.include.dist -p /usr/include -deU
+# 
 
 MTREE_ROOT?=/usr/stage
 mkmtree:

@@ -33,7 +33,7 @@ checksum fetch:
 pre-clean:
 	@cd ${WRKSRC} && ${MAKE} clean cleandepend
 
-ALL_TARGET=depend obj all
+ALL_TARGET=makestagedirs depend obj all
 
 MAKE_JOBS_UNSAFE=yes
 
