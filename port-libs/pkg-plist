@@ -46,7 +46,17 @@
 /usr/lib/librdmacm.so
 /usr/lib/librdmacm.so.1
 /usr/lib/librdmacm_p.a
-/usr/share/man/man1
+/usr/share/man/man1/ibv_asyncwatch.1.gz
+/usr/share/man/man1/ibv_devices.1.gz
+/usr/share/man/man1/ibv_devinfo.1.gz
+/usr/share/man/man1/ibv_rc_pingpong.1.gz
+/usr/share/man/man1/ibv_srq_pingpong.1.gz
+/usr/share/man/man1/ibv_uc_pingpong.1.gz
+/usr/share/man/man1/ibv_ud_pingpong.1.gz
+/usr/share/man/man1/mckey.1.gz
+/usr/share/man/man1/rping.1.gz
+/usr/share/man/man1/ucmatose.1.gz
+/usr/share/man/man1/udaddy.1.gz
 /usr/share/man/man3/ibv_alloc_pd.3.gz
 /usr/share/man/man3/ibv_attach_mcast.3.gz
 /usr/share/man/man3/ibv_create_ah.3.gz
@@ -112,8 +122,11 @@
 /usr/share/man/man3/rdma_resolve_addr.3.gz
 /usr/share/man/man3/rdma_resolve_route.3.gz
 /usr/share/man/man3/rdma_set_option.3.gz
-/usr/share/man/man7
+/usr/share/man/man7/rdma_cm.7.gz
+/usr/share/man/man7/verbs.7.gz
+@unexec rmdir >/dev/null 2>&1 /usr/share/man/man7 || :
 @unexec rmdir >/dev/null 2>&1 /usr/share/man/man3 || :
+@unexec rmdir >/dev/null 2>&1 /usr/share/man/man1 || :
 @unexec rmdir >/dev/null 2>&1 /usr/share/man || :
 @unexec rmdir >/dev/null 2>&1 /usr/share || :
 @unexec rmdir >/dev/null 2>&1 /usr/lib || :

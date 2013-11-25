@@ -76,9 +76,19 @@ share           nlink=3 time=1384789521.000000000
 # ./usr/share/man
 man             nlink=3 time=1384789521.000000000
 
+# ./usr/share/man/man1
+man1            nlink=2 time=1384789521.000000000
+# ./usr/share/man/man1
+..
+
 # ./usr/share/man/man3
 man3            nlink=2 time=1384789521.000000000
 # ./usr/share/man/man3
+..
+
+# ./usr/share/man/man7
+man7            nlink=2 time=1384789521.000000000
+# ./usr/share/man/man7
 ..
 
 # ./usr/share/man

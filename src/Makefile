@@ -38,6 +38,9 @@ OFED_LIBDIR=${OFED_BINDIR}/usr.lib
 
 my-all-libs: makestagedirs
 	env MAKEOBJDIRPREFIX=${DESTDIR} INCLUDEDIR=${DESTDIR}/usr/include && ${MAKE} -C ${OFED_LIBDIR} ${MAKEFLAGS} depend all 
+.ifdef STAGEDIR
+	-find ${STAGEDIR} -type d -depth -delete -print
+.endif
 
 my-install-libs:
 	env MAKEOBJDIRPREFIX=${DESTDIR} INCLUDEDIR=${DESTDIR}/usr/include && ${MAKE} -C ${OFED_LIBDIR} ${MAKEFLAGS} install
