@@ -34,6 +34,14 @@ myall: makestagedirs ${SUBTARGETS}
 	#${MAKE} ${MAKEFLAGS} includes
 	#${MAKE} ${MAKEFLAGS} depend obj all 
 
+OFED_LIBDIR=${OFED_BINDIR}/usr.lib
+
+my-all-libs: makestagedirs
+	env MAKEOBJDIRPREFIX=${DESTDIR} INCLUDEDIR=${DESTDIR}/usr/include && ${MAKE} -C ${OFED_LIBDIR} ${MAKEFLAGS} depend all 
+
+my-install-libs:
+	env MAKEOBJDIRPREFIX=${DESTDIR} INCLUDEDIR=${DESTDIR}/usr/include && ${MAKE} -C ${OFED_LIBDIR} ${MAKEFLAGS} install
+
 my-install-includes: makestagedirs
 	env MAKEOBJDIRPREFIX=${DESTDIR} INCLUDEDIR=${DESTDIR}/usr/include && ${MAKE} -C ${OFED_BINDIR} ${MAKEFLAGS} includes 
 .ifdef STAGEDIR
