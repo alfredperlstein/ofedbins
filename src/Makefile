@@ -7,7 +7,7 @@
 #
 FREEBSD_SRCTOP?=/usr/src
 
-OFED_BINDIR?=${FREEBSD_SRCTOP}/contrib/ofed
+OFED_TOPDIR?=${FREEBSD_SRCTOP}/contrib/ofed
 
 .ifdef STAGEDIR
 DESTDIR=${STAGEDIR}
@@ -20,11 +20,11 @@ DESTDIR?=/
 CFLAGS+= -I${FREEBSD_SRCTOP}/contrib/ofed/include
 
 MAKEFLAGS+= 'CFLAGS+=-I${FREEBSD_SRCTOP}/contrib/ofed/include'
-#MAKEFLAGS+= "  -C ${OFED_BINDIR} "
+#MAKEFLAGS+= "  -C ${OFED_TOPDIR} "
 
 MTREE_FILE=mellanox.bin.dist
 
-#SUBDIRS=${OFED_BINDIR}
+#SUBDIRS=${OFED_TOPDIR}
 
 SUBTARGETS=clean cleandepend obj depend all install
 
@@ -34,7 +34,17 @@ myall: makestagedirs ${SUBTARGETS}
 	#${MAKE} ${MAKEFLAGS} includes
 	#${MAKE} ${MAKEFLAGS} depend obj all 
 
-OFED_LIBDIR=${OFED_BINDIR}/usr.lib
+OFED_LIBDIR=${OFED_TOPDIR}/usr.lib
+OFED_BINDIR=${OFED_TOPDIR}/usr.bin
+
+my-all-bins: makestagedirs
+	env MAKEOBJDIRPREFIX=${DESTDIR} INCLUDEDIR=${DESTDIR}/usr/include && ${MAKE} -C ${OFED_BINDIR} ${MAKEFLAGS} depend all 
+.ifdef STAGEDIR
+	-find ${STAGEDIR} -type d -depth -delete -print
+.endif
+
+my-install-bins:
+	env MAKEOBJDIRPREFIX=${DESTDIR} INCLUDEDIR=${DESTDIR}/usr/include && ${MAKE} -C ${OFED_BINDIR} ${MAKEFLAGS} install
 
 my-all-libs: makestagedirs
 	env MAKEOBJDIRPREFIX=${DESTDIR} INCLUDEDIR=${DESTDIR}/usr/include && ${MAKE} -C ${OFED_LIBDIR} ${MAKEFLAGS} depend all 
@@ -46,20 +56,20 @@ my-install-libs:
 	env MAKEOBJDIRPREFIX=${DESTDIR} INCLUDEDIR=${DESTDIR}/usr/include && ${MAKE} -C ${OFED_LIBDIR} ${MAKEFLAGS} install
 
 my-install-includes: makestagedirs
-	env MAKEOBJDIRPREFIX=${DESTDIR} INCLUDEDIR=${DESTDIR}/usr/include && ${MAKE} -C ${OFED_BINDIR} ${MAKEFLAGS} includes 
+	env MAKEOBJDIRPREFIX=${DESTDIR} INCLUDEDIR=${DESTDIR}/usr/include && ${MAKE} -C ${OFED_TOPDIR} ${MAKEFLAGS} includes 
 .ifdef STAGEDIR
 	-find ${STAGEDIR} -type d -depth -delete -print
 .endif
 
 #my-install-includes:
-#	env MAKEOBJDIRPREFIX=${DESTDIR} INCLUDEDIR=${DESTDIR}/usr/include && ${MAKE} -C ${OFED_BINDIR} ${MAKEFLAGS} install-includes
+#	env MAKEOBJDIRPREFIX=${DESTDIR} INCLUDEDIR=${DESTDIR}/usr/include && ${MAKE} -C ${OFED_TOPDIR} ${MAKEFLAGS} install-includes
 
 none:
 	@echo Doing $@
 
 
 ${SUBTARGETS}:  #all clean includes cleandepend obj depend install:
-	env MAKEOBJDIRPREFIX=${DESTDIR} INCLUDEDIR=${DESTDIR}/usr/include && ${MAKE} -C ${OFED_BINDIR} ${MAKEFLAGS} $@
+	env MAKEOBJDIRPREFIX=${DESTDIR} INCLUDEDIR=${DESTDIR}/usr/include && ${MAKE} -C ${OFED_TOPDIR} ${MAKEFLAGS} $@
 
 makestagedirs:
 	mkdir -p ${DESTDIR}

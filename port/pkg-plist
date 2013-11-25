@@ -1,0 +1,47 @@
+/usr/bin/ibaddr
+/usr/bin/ibnetdiscover
+/usr/bin/ibping
+/usr/bin/ibportstate
+/usr/bin/ibroute
+/usr/bin/ibsendtrap
+/usr/bin/ibstat
+/usr/bin/ibsysstat
+/usr/bin/ibtracert
+/usr/bin/opensm
+/usr/bin/perfquery
+/usr/bin/saquery
+/usr/bin/sminfo
+/usr/bin/smpdump
+/usr/bin/smpquery
+/usr/bin/vendstat
+/usr/share/man/man8/ibaddr.8.gz
+/usr/share/man/man8/ibnetdiscover.8.gz
+/usr/share/man/man8/ibping.8.gz
+/usr/share/man/man8/ibportstate.8.gz
+/usr/share/man/man8/ibroute.8.gz
+/usr/share/man/man8/ibstat.8.gz
+/usr/share/man/man8/ibsysstat.8.gz
+/usr/share/man/man8/ibtracert.8.gz
+/usr/share/man/man8/opensm.8.gz
+/usr/share/man/man8/perfquery.8.gz
+/usr/share/man/man8/saquery.8.gz
+/usr/share/man/man8/sminfo.8.gz
+/usr/share/man/man8/smpdump.8.gz
+/usr/share/man/man8/smpquery.8.gz
+/usr/share/man/man8/vendstat.8.gz
+@unexec rmdir >/dev/null 2>&1 /usr/share/man/man8 || :
+@unexec rmdir >/dev/null 2>&1 /usr/share/man/man7 || :
+@unexec rmdir >/dev/null 2>&1 /usr/share/man/man3 || :
+@unexec rmdir >/dev/null 2>&1 /usr/share/man/man1 || :
+@unexec rmdir >/dev/null 2>&1 /usr/share/man || :
+@unexec rmdir >/dev/null 2>&1 /usr/share || :
+@unexec rmdir >/dev/null 2>&1 /usr/lib || :
+@unexec rmdir >/dev/null 2>&1 /usr/include/rdma || :
+@unexec rmdir >/dev/null 2>&1 /usr/include/infiniband/vendor || :
+@unexec rmdir >/dev/null 2>&1 /usr/include/infiniband/rdma || :
+@unexec rmdir >/dev/null 2>&1 /usr/include/infiniband/opensm || :
+@unexec rmdir >/dev/null 2>&1 /usr/include/infiniband/iba || :
+@unexec rmdir >/dev/null 2>&1 /usr/include/infiniband/complib || :
+@unexec rmdir >/dev/null 2>&1 /usr/include/infiniband || :
+@unexec rmdir >/dev/null 2>&1 /usr/include || :
+@unexec rmdir >/dev/null 2>&1 /usr/bin || :

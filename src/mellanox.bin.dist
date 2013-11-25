@@ -91,6 +91,11 @@ man7            nlink=2 time=1384789521.000000000
 # ./usr/share/man/man7
 ..
 
+# ./usr/share/man/man8
+man8            nlink=2 time=1384789521.000000000
+# ./usr/share/man/man8
+..
+
 # ./usr/share/man
 ..
 
