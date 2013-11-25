@@ -16,10 +16,39 @@ MAKEFLAGS+=	DESTDIR=${STAGEDIR}
 
 DESTDIR?=/
 
+#CFLAGS+= -I${DESTDIR}/usr/include
+CFLAGS+= -I${FREEBSD_SRCTOP}/contrib/ofed/include
+
+MAKEFLAGS+= 'CFLAGS+=-I${FREEBSD_SRCTOP}/contrib/ofed/include'
+#MAKEFLAGS+= "  -C ${OFED_BINDIR} "
+
 MTREE_FILE=mellanox.bin.dist
 
-all clean cleandepend obj depend install:
-	cd ${OFED_BINDIR} && ${MAKE} ${MAKEFLAGS} $@
+#SUBDIRS=${OFED_BINDIR}
+
+SUBTARGETS=clean cleandepend obj depend all install
+
+myall: makestagedirs ${SUBTARGETS}
+	echo "******* Building $@"
+	#${MAKE} ${MAKEFLAGS} makestagedirs
+	#${MAKE} ${MAKEFLAGS} includes
+	#${MAKE} ${MAKEFLAGS} depend obj all 
+
+my-install-includes: makestagedirs
+	env MAKEOBJDIRPREFIX=${DESTDIR} INCLUDEDIR=${DESTDIR}/usr/include && ${MAKE} -C ${OFED_BINDIR} ${MAKEFLAGS} includes 
+.ifdef STAGEDIR
+	-find ${STAGEDIR} -type d -depth -delete -print
+.endif
+
+#my-install-includes:
+#	env MAKEOBJDIRPREFIX=${DESTDIR} INCLUDEDIR=${DESTDIR}/usr/include && ${MAKE} -C ${OFED_BINDIR} ${MAKEFLAGS} install-includes
+
+none:
+	@echo Doing $@
+
+
+${SUBTARGETS}:  #all clean includes cleandepend obj depend install:
+	env MAKEOBJDIRPREFIX=${DESTDIR} INCLUDEDIR=${DESTDIR}/usr/include && ${MAKE} -C ${OFED_BINDIR} ${MAKEFLAGS} $@
 
 makestagedirs:
 	mkdir -p ${DESTDIR}
@@ -42,4 +71,4 @@ mkmtree:
 		${MTREE_ROOT}/usr/include/rdma
 	mtree -cd -p ${MTREE_ROOT} > ${MTREE_FILE}
 
-.include <bsd.subdir.mk>
+#.include <bsd.subdir.mk>

@@ -6,17 +6,14 @@
 # $Id: Makefile,v 1.2 2002/11/26 10:38:28 pmedwards Exp $
 #
 
-PORTNAME=       ofed-bins
+PORTNAME=       ofed-includes
 PORTVERSION=    1.0
 #PORTREVISION=   1
 
 CATEGORIES=     devel
 
-# busted for non-ports ports
-#BUILD_DEPENDS=	ofed-includes:../port-includes
-
 MAINTAINER=     alfred@FreeBSD.org
-COMMENT=        binaries for ofed
+COMMENT=        includes for ofed
 
 USE_XZ=		yes
 
@@ -33,8 +30,9 @@ checksum fetch:
 pre-clean:
 	@cd ${WRKSRC} && ${MAKE} clean cleandepend
 
-ALL_TARGET=myall
-# makestagedirs includes depend obj all
+ALL_TARGET=none
+
+INSTALL_TARGET=my-install-includes
 
 MAKE_JOBS_UNSAFE=yes
 
